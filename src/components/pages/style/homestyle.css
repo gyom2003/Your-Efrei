@@ -1,0 +1,31 @@
+
+
+
+.h3carou {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.globalCarousel {
+    margin-right: 26%;
+}
+
+.globalCard {
+    display: flex;
+    justify-content: center;
+}
+.lignDivOne {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    align-items: center;
+}
+.lignDivTwo {
+    display: flex;
+    width: 20%;
+    margin-top: -21%;
+    flex-direction: column;
+    align-items: center;
+}

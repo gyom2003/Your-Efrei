@@ -1,0 +1,17 @@
+.footerDiv {
+    background-color: #163767;
+}
+.footertextdiv, p {
+    color: white;
+    text-align: center;
+}
+.footertextdiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.barfooter {
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -1,0 +1,93 @@
+
+
+.positionLogin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.globalLogin{
+    font-family: "Libre Baskerville", serif;
+    position: static;
+    max-width: 430px;
+    width: 100%;
+    background: #bdd1f5;
+    padding: 50px;
+    margin-top: 4%;  
+    margin-bottom: 2%;    
+    border-radius: 6px; 
+    box-shadow: 0 10px 10px rgba(0,0,0,0.4);
+    border: 1px solid rgb(160, 160, 160);
+  }
+  .globalLogin h2{
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+  }
+  .globalLogin h2::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 28px;
+    border-radius: 12px;
+    background: #4070f4;
+  }
+  .globalLogin form{
+    margin-top: 30px;
+  }
+  .globalLogin form .formInput{
+    height: 52px;
+    margin: 18px 0;
+    margin-right: 10%;
+  }
+  form .formInput input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+    border: 1.5px solid #C7BEBE;
+    border-bottom-width: 2.5px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  .formInput input:focus,
+  .formInput input:valid{
+    border-color: #4070f4;
+  }
+  form .textdiv{
+    display: flex;
+    align-items: center;
+  }
+  form h3{
+    color: #707070;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+  .formInput.button input{
+    color: #fff;
+    letter-spacing: 1px;
+    border: none;
+    background: #4070f4;
+    cursor: pointer;
+  }
+  .formInput.button input:hover{
+    background: #0e4bf1;
+  }
+  form .footerText h3{
+   color: #333;
+   width: 100%;
+   text-align: center;
+  }
+  form .footerText h3 a{
+    color: #4070f4;
+    text-decoration: none;
+  }
+  form .footerText h3 a:hover{
+    text-decoration: underline;
+  }

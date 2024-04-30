@@ -1,0 +1,33 @@
+
+.appbarglobal {
+    height: 90px;
+    width: 100%; 
+    border: 1px solid transparent;
+    border-bottom: 2px solid #ccc;
+    background-color: #163767;
+}
+.buttonsbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 25px;
+    margin-left: 30%;
+    width: 50%;
+  }
+.appmenues {
+    position: relative;
+    bottom: 60%;
+}
+.logo {
+    margin-left: 10px;
+    width: 5%;
+    height: 5%;
+}
+.menudiv {
+    position: relative;
+    border: 1px solid black;
+    position: relative;
+    bottom: 57px;
+    right: 1px;
+    width: 100%;
+}
