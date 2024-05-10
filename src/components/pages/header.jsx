@@ -16,7 +16,7 @@ function HeaderComponent() {
     }
     const items = [
         {
-            label: "Acueil", 
+            label: "Acueil",    
             key: "accueil",    
         }, 
         {
@@ -58,7 +58,6 @@ function HeaderComponent() {
     ]
     const navigate = useNavigate();
     const handeMenuRedirection = (key) => {
-        console.log(key)
         switch(key) {
             case 'accueil':
                 navigate("/")
@@ -83,7 +82,7 @@ function HeaderComponent() {
     }
 
     const logoutClick = () => {
-        return navigate("/yourefrei/student/registration")
+        return navigate("/yourefrei/student/login")
     }
     return (
         <div className="appbarglobal">

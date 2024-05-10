@@ -9,9 +9,9 @@ import TeacherPlanning from "../src/components/teacherPlanning";
 import UserGrades from "../src/components/userGrades";
 import UserPlanning from "../src/components/userPlanning";
 import UserDocs from "../src/components/userDocs";
-import UserAbsent from "../src/components/userDocs";
+import UserAbsent from "../src/components/userAbsent.jsx";
 import Homepage from './components/homepage';
-import Registration from './components/pages/registration.jsx';
+import Login from './components/pages/login.jsx';
 
 //TODO: path / passer par apps qui traiterait logique login.
 const router = createBrowserRouter([
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
     element: <Homepage/>, 
   },
   {
-    path: "yourefrei/registration", 
-    element: <Registration/>, 
+    path: "yourefrei/login", 
+    element: <Login/>, 
   },
   {
     path: "yourefrei/teacher/planning", 

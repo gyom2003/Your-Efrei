@@ -1,15 +1,15 @@
 import HeaderComponent from './header';
 import FooterComponent from './footer';
-import RegistrationCompo from './globalComponents/registrationCompo';
+import LoginCompo from './globalComponents/loginCompo';
 
-function Registration() {
+function Login() {
     return (
         <div>
             <HeaderComponent/>
-            <RegistrationCompo/>
+            <LoginCompo/>
             <FooterComponent/>
         </div>
     )
 }
 
-export default Registration;
+export default Login;

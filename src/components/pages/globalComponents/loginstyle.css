@@ -12,8 +12,8 @@
     width: 100%;
     background: #bdd1f5;
     padding: 50px;
-    margin-top: 4%;  
-    margin-bottom: 2%;    
+    margin-top: 6%; 
+    margin-bottom: 7.3%;    
     border-radius: 6px; 
     box-shadow: 0 10px 10px rgba(0,0,0,0.4);
     border: 1px solid rgb(160, 160, 160);
@@ -59,10 +59,6 @@
   .formInput input:valid{
     border-color: #4070f4;
   }
-  form .textdiv{
-    display: flex;
-    align-items: center;
-  }
   form h3{
     color: #707070;
     font-size: 14px;
@@ -84,10 +80,9 @@
    width: 100%;
    text-align: center;
   }
-  form .footerText h3 a{
-    color: #4070f4;
-    text-decoration: none;
-  }
-  form .footerText h3 a:hover{
-    text-decoration: underline;
+
+
+  .divjson {
+    border: 2px solid black;
+    background-color: red;
   }
