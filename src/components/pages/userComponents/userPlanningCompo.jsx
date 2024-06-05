@@ -2,7 +2,7 @@ import { Alert, Calendar } from 'antd';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 
-function UserPlanningCompo() {
+function GlobalPlanningCompo() {
     const [calendarValue, setcalandarValue] = useState(() => dayjs())
     const [selectedValue, setselectedValue] = useState(() => dayjs())
 
@@ -26,4 +26,4 @@ function UserPlanningCompo() {
     )
 }
 
-export default UserPlanningCompo;
+export default GlobalPlanningCompo;

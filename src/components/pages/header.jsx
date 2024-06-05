@@ -1,5 +1,5 @@
-// import 'antd/dist/antd.css';
-import { Menu, Button, MenuProps } from "antd";
+import React from 'react';
+import { Menu, Button } from "antd";
 import logo from "./img/logo.png"
 import "./style/headerstyle.css"
 import { icons } from "antd/es/image/PreviewGroup";
@@ -7,12 +7,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router';
 
-function HeaderComponent() {
+function HeaderComponent(loginRef) {
+    const location = useLocation();
+    const loginTokenRef = location.state;
+    console.log("header data", loginTokenRef)
     const menustyle = {
         'fontFamily': "Libre Baskerville",
         'fontWeight': 400,
         'fontStyle': "normal",
+        'margin-top': '20px',
     }
     const items = [
         {
@@ -55,34 +60,67 @@ function HeaderComponent() {
                 }
             ]
         },
+        {
+            label: "Logout",    
+            key: "logout",    
+        }, 
     ]
     const navigate = useNavigate();
     const handeMenuRedirection = (key) => {
-        switch(key) {
-            case 'accueil':
-                navigate("/")
-                break;
-            case 'planning':
-                navigate("/yourefrei/student/planning")
-                break;
-            case 'gradesmenu':
-                navigate("yourefrei/student/grades")
-                break;
-            case 'absent':
-                navigate("/yourefrei/student/absent")
-                break;
-            case 'documents':
-                navigate("/yourefrei/student/documents")
-                break;
-            
-            default:
-                break;
-
+        if (loginTokenRef.isProfRef) {
+            switch(key) {
+                case 'accueil':
+                    navigate("/yourefrei", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    break;
+                case 'planning':
+                    navigate("/yourefrei/teacher/planning", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    break;
+                case 'gradesmenu':
+                    navigate("yourefrei/teacher/grades", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    break;
+                case 'absent':
+                    navigate("/yourefrei/teacher/absent", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    break;
+                case 'documents':
+                    navigate("/yourefrei/teacher/documents", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    break;
+                case 'logout':
+                    logoutClick()
+                    break;
+                
+                default:
+                    break;
+            }
+        } else {
+            switch(key) {
+                case 'accueil':
+                    navigate("/yourefrei", {state:{isProfRef: loginRef.isProfRef}})
+                    break;
+                case 'planning':
+                    navigate("/yourefrei/student/planning", {state:{isProfRef: loginRef.isProfRef}})
+                    break;
+                case 'gradesmenu':
+                    navigate("yourefrei/student/grades", {state:{isProfRef: loginRef.isProfRef}})
+                    break;
+                case 'absent':
+                    navigate("/yourefrei/student/absent", {state:{isProfRef: loginRef.isProfRef}})
+                    break;
+                case 'documents':
+                    navigate("/yourefrei/student/documents", {state:{isProfRef: loginRef.isProfRef}})
+                    break;
+                case 'logout':
+                    logoutClick()
+                    break;
+                
+                default:
+                    break;
+            }
         }
     }
 
     const logoutClick = () => {
-        return navigate("/yourefrei/student/login")
+        localStorage.clear();
+        window.location.href = "/";
     }
     return (
         <div className="appbarglobal">
@@ -95,20 +133,8 @@ function HeaderComponent() {
             fontWeight: "400", 
             fontStyle: "normal"
 
-         }}>Etudiant</p>
+         }}>{loginRef.isProfRef ? "Professeur" : "Etudiant"}</p>
             <div className="buttonsbar">
-                <Button 
-                onClick={logoutClick}
-                style={{
-                position: "relative",
-                marginLeft: "110%", 
-                fontFamily: 'Libre Baskerville',
-                fontStyle: "normal", 
-                fontWeight: "400", 
-                fontSize: "14px" }}
-                className="elbuttonstyle" type="primary" shape="round" icon={<FontAwesomeIcon icon={faSignOutAlt}/>}>
-                Logout
-                </Button>
             </div>
 
             <div className="appmenues">

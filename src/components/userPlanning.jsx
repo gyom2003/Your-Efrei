@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
 import FooterComponent from './pages/footer';
 import HeaderComponent from './pages/header';
-import UserPlanningCompo from './pages/userComponents/userPlanningCompo';
+import GlobalPlanningCompo from './pages/globalComponents/globalPlanningCompo';
+import { useLocation } from 'react-router';
+import { Navigate } from "react-router-dom";
+import { notification } from 'antd';
 
 function UserPlanning() {
+    const location = useLocation();
+    const loginTokenData= location.state 
+
+    const userinfoLogin = () => {
+        notification.info({
+            message: "planning user no data", 
+            duration: 2
+        })
+    }
     return (
-        <div>
-            <HeaderComponent/>
-            <UserPlanningCompo/>
-            <FooterComponent/>
-        </div>
+        <>
+        {loginTokenData ? (
+            <div>
+                <HeaderComponent/>
+                <GlobalPlanningCompo loginRef={loginTokenData.loginTokenRef}/>
+                <FooterComponent/>
+            </div>
+        ) : <>
+            {userinfoLogin}
+        </>}
+    </>
     )
 }
 

@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 import React, { useState } from "react";
 import './loginstyle.css';
 import { Button } from "antd";
 import {jsonData} from '../../data/loginData';
-import { Divider, notification } from 'antd';
+import { notification } from 'antd';
 
 function LoginCompo() {
     const [usernameForm, setUsernameForm] = useState("")
     const [emailForm, setEmailForm] = useState("")
     const [mdpForm, setMdpForm] = useState("")
     const navigate = useNavigate();
+    var loginToken = false;
 
     const onpenNotification = () => {
         notification.info({
@@ -24,9 +26,14 @@ function LoginCompo() {
         identifiantsRef.map(function(identifiant)  {
            const isLoginValid = usernameForm === identifiant.username && emailForm === identifiant.mail && mdpForm === identifiant.mot_de_passe
            if (isLoginValid) {
-                //TODO: attribution d'un token bool passe homecompo props
-                onpenNotification()
-                navigate("/")
+                const isProf = identifiant.isprof;
+                loginToken = !loginToken<
+                onpenNotification();
+                return navigate("/yourefrei", {
+                    state:{
+                        loginTokenRef:loginToken, 
+                        isProfRef:isProf
+                        } })
            }
         }) 
     }

@@ -5,19 +5,24 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import TeacherGrades from "../src/components/teacherGrades";
-import TeacherPlanning from "../src/components/teacherPlanning";
+// import TeacherPlanning from "../src/components/teacherPlanning";
+import GlobalplanningPage from './components/pages/globalComponents/globalplanningPage.jsx';
 import UserGrades from "../src/components/userGrades";
-import UserPlanning from "../src/components/userPlanning";
+// import UserPlanning from "../src/components/userPlanning";
 import UserDocs from "../src/components/userDocs";
 import UserAbsent from "../src/components/userAbsent.jsx";
 import Homepage from './components/homepage';
 import Login from './components/pages/login.jsx';
+import { Navigate } from "react-router-dom";
 
-//TODO: path / passer par apps qui traiterait logique login.
 const router = createBrowserRouter([
   {
-    path: "/", 
+    path: "/yourefrei", 
     element: <Homepage/>, 
+  },
+  {
+    path: "/", 
+    element: <Navigate to="/yourefrei" replace={true} />, 
   },
   {
     path: "yourefrei/login", 
@@ -25,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "yourefrei/teacher/planning", 
-    element: <TeacherPlanning/>, 
+    element: <GlobalplanningPage/>, 
   },
   {
     path: "yourefrei/teacher/grades", 
@@ -33,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "yourefrei/student/planning", 
-    element: <UserPlanning/>, 
+    element: <GlobalplanningPage/>, 
   },
   {
     path: "yourefrei/student/grades", 

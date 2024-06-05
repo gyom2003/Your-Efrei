@@ -13,11 +13,14 @@ import { Card } from 'antd';
 import { Button } from 'antd';
 import { Carousel } from "antd"
 import './style/homestyle.css'
-
+import { useLocation } from 'react-router';
 
 const { Meta } = Card;
 
 function HomeComponent() {
+    const location = useLocation();
+    const loginTokenRef = location.state
+
     const contentStyle = {
         margin: '0 auto',
         height: '350px',

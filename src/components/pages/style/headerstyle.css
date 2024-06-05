@@ -1,6 +1,6 @@
 
 .appbarglobal {
-    height: 90px;
+    height: 120px;
     width: 100%; 
     border: 1px solid transparent;
     border-bottom: 2px solid #ccc;
@@ -16,7 +16,7 @@
   }
 .appmenues {
     position: relative;
-    bottom: 60%;
+    bottom: 25%;
 }
 .logo {
     margin-left: 10px;
@@ -24,8 +24,6 @@
     height: 5%;
 }
 .menudiv {
-    position: relative;
-    border: 1px solid black;
     position: relative;
     bottom: 57px;
     right: 1px;
