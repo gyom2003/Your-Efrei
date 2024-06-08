@@ -12,7 +12,6 @@ import { useLocation } from 'react-router';
 function HeaderComponent(loginRef) {
     const location = useLocation();
     const loginTokenRef = location.state;
-    console.log("header data", loginTokenRef)
     const menustyle = {
         'fontFamily': "Libre Baskerville",
         'fontWeight': 400,
@@ -70,13 +69,13 @@ function HeaderComponent(loginRef) {
         if (loginTokenRef.isProfRef) {
             switch(key) {
                 case 'accueil':
-                    navigate("/yourefrei", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    navigate("/yourefrei", {state:loginTokenRef})
                     break;
                 case 'planning':
-                    navigate("/yourefrei/teacher/planning", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    navigate("/yourefrei/teacher/planning", {state:loginTokenRef})
                     break;
                 case 'gradesmenu':
-                    navigate("yourefrei/teacher/grades", {state:{isProfRef: loginTokenRef.isProfRef}})
+                    navigate("yourefrei/teacher/grades", {state:loginTokenRef})
                     break;
                 case 'absent':
                     navigate("/yourefrei/teacher/absent", {state:{isProfRef: loginTokenRef.isProfRef}})
@@ -94,13 +93,13 @@ function HeaderComponent(loginRef) {
         } else {
             switch(key) {
                 case 'accueil':
-                    navigate("/yourefrei", {state:{isProfRef: loginRef.isProfRef}})
+                    navigate("/yourefrei", {state:loginTokenRef})
                     break;
                 case 'planning':
-                    navigate("/yourefrei/student/planning", {state:{isProfRef: loginRef.isProfRef}})
+                    navigate("/yourefrei/student/planning", {state:loginTokenRef})
                     break;
                 case 'gradesmenu':
-                    navigate("yourefrei/student/grades", {state:{isProfRef: loginRef.isProfRef}})
+                    navigate("yourefrei/student/grades", {state:loginTokenRef})
                     break;
                 case 'absent':
                     navigate("/yourefrei/student/absent", {state:{isProfRef: loginRef.isProfRef}})
@@ -119,7 +118,6 @@ function HeaderComponent(loginRef) {
     }
 
     const logoutClick = () => {
-        localStorage.clear();
         window.location.href = "/";
     }
     return (

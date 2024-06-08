@@ -27,12 +27,13 @@ function LoginCompo() {
            const isLoginValid = usernameForm === identifiant.username && emailForm === identifiant.mail && mdpForm === identifiant.mot_de_passe
            if (isLoginValid) {
                 const isProf = identifiant.isprof;
-                loginToken = !loginToken<
+                loginToken = !loginToken
                 onpenNotification();
                 return navigate("/yourefrei", {
                     state:{
                         loginTokenRef:loginToken, 
-                        isProfRef:isProf
+                        isProfRef:isProf, 
+                        classDataRef: !isProf && identifiant.classData 
                         } })
            }
         }) 

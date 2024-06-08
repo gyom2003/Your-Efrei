@@ -1,0 +1,21 @@
+
+
+.table-container {
+    width: 80%;
+    margin: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    background: linear-gradient(90deg, #ffffff, #f0f0f0);
+    border: 1px solid #ddd;
+}
+
+.titre {
+    font-weight: bold;
+}
