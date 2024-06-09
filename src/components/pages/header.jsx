@@ -1,10 +1,9 @@
-import React from 'react';
+// import React from 'react';
 import { Menu, Button } from "antd";
 import logo from "./img/logo.png"
 import "./style/headerstyle.css"
-import { icons } from "antd/es/image/PreviewGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react';
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router';
@@ -75,7 +74,7 @@ function HeaderComponent(loginRef) {
                     navigate("/yourefrei/teacher/planning", {state:loginTokenRef})
                     break;
                 case 'gradesmenu':
-                    navigate("yourefrei/teacher/grades", {state:loginTokenRef})
+                    navigate("/yourefrei/teacher/planning", {state: { ...loginTokenRef, gradesState: true }})
                     break;
                 case 'absent':
                     navigate("/yourefrei/teacher/absent", {state:{isProfRef: loginTokenRef.isProfRef}})
@@ -99,7 +98,7 @@ function HeaderComponent(loginRef) {
                     navigate("/yourefrei/student/planning", {state:loginTokenRef})
                     break;
                 case 'gradesmenu':
-                    navigate("yourefrei/student/grades", {state:loginTokenRef})
+                    navigate("/yourefrei/student/planning", {state: { ...loginTokenRef, gradesState: true }})
                     break;
                 case 'absent':
                     navigate("/yourefrei/student/absent", {state:{isProfRef: loginRef.isProfRef}})
@@ -131,7 +130,9 @@ function HeaderComponent(loginRef) {
             fontWeight: "400", 
             fontStyle: "normal"
 
-         }}>{loginRef.isProfRef ? "Professeur" : "Etudiant"}</p>
+         }}>
+         Your-Efrei
+         </p>
             <div className="buttonsbar">
             </div>
 

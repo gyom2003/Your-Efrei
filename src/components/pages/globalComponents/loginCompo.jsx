@@ -15,7 +15,7 @@ function LoginCompo() {
 
     const onpenNotification = () => {
         notification.info({
-            message: 'Success for your Login', 
+            message: 'Succès pour le login', 
             description:  `Hello, ${usernameForm}`, 
             duration: 3
         })

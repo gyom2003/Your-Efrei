@@ -11,7 +11,7 @@ function Homepage() {
     const loginTokenData= location.state
     const homepageinfoLogin = () => {
         notification.info({
-            message: "You can't access to the homepage without login", 
+            message: "Tu ne peux pas accéder à l'application sans te connecter", 
             duration: 2
         })
         return <Navigate to="/yourefrei/login" replace={true} />

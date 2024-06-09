@@ -4,7 +4,6 @@ import '../style/modalSeeMore.css'
 
 function DetailsCoursCompo({ eventInfos, showModalDetailsRef, onCancelEvent}) {
 
-    //TODO:envoyé l'id de l'evenement selectionné
     const tableStyle = {
         'width': '50%', 
         'height': '300px'

@@ -2,14 +2,13 @@ import { Alert, Badge, Button, Calendar } from 'antd';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import DetailsCoursCompo from "../globalComponents/detailscoursCompo";
-import { logDOM } from '@testing-library/react';
-import { type } from '@testing-library/user-event/dist/type';
 
 function GlobalPlanningCompo({ CalandarSelect, events, deleteEvent, loginRef }) {
     const isProfRef = loginRef[Object.keys(loginRef)[1]]    
     const [calendarValue, setcalandarValue] = useState(() => dayjs())
     const [selectedValue, setselectedValue] = useState(() => dayjs())
     const [showModalDetails, setShowModalDetails] = useState(false)
+    const [selectedEventDetails, setSelectedEventDetails] = useState([]);
 
     const closeDetailsModal = () => {
         setShowModalDetails(false)
@@ -31,19 +30,18 @@ function GlobalPlanningCompo({ CalandarSelect, events, deleteEvent, loginRef }) 
         const textColor = {'color': 'black', 'margin': '10px', 'font-size': '13px'}
         const divButtonStyle = {'display': 'flex', 'flex-direction': 'row', 'justify-content': ''}
         // const classRefEvents = events[0][Object.keys(events[0])[1]]
-        const getAllClassEvents = events.map(data => data.class)
-       
+        // const getAllClassEvents = events.map(data => data.class)
 
         return (
           <>
             {dataFinalCells.map((eventData) => (
-                <div key={eventData.id}> 
+                <div  key={eventData.id}> 
                     {!isProfRef ? (
                     eventData.class === loginRef.classDataRef && (
                             <>
                                 <Badge status="success" text={`${eventData.title}`} style={badgeStyle}></Badge>
                                 <div style={divButtonStyle}>
-                                    <p onClick={() => setShowModalDetails(true)} style={textColor}>Voir Plus</p>
+                                    <p onClick={() => {setShowModalDetails(true); setSelectedEventDetails(dataFinalCells)}} style={textColor}>Voir Plus</p>
                                     {isProfRef && <p onClick={() => deleteEvent(eventData.id)} style={textColor}>Supprimer</p>}
                                 </div>
                             </>
@@ -52,7 +50,7 @@ function GlobalPlanningCompo({ CalandarSelect, events, deleteEvent, loginRef }) 
                         <>
                             <Badge status="success" text={`${eventData.title}`} style={badgeStyle}></Badge>
                             <div style={divButtonStyle}>
-                                <p onClick={() => setShowModalDetails(true)} style={textColor}>Voir Plus</p>
+                                <p onClick={() =>  {setShowModalDetails(true); setSelectedEventDetails(dataFinalCells)}} style={textColor}>Voir Plus</p>
                                 {isProfRef && <p onClick={() => deleteEvent(eventData.id)} style={textColor}>Supprimer</p>}
                             </div>
                         </>
@@ -90,7 +88,7 @@ function GlobalPlanningCompo({ CalandarSelect, events, deleteEvent, loginRef }) 
             style={isProfRef ? calandarstyle : calandarstyleUser}/>
 
             {showModalDetails && (
-                <DetailsCoursCompo eventInfos={events} showModalDetailsRef={showModalDetails} onCancelEvent={closeDetailsModal}/>
+                <DetailsCoursCompo eventInfos={selectedEventDetails} showModalDetailsRef={showModalDetails} onCancelEvent={closeDetailsModal}/>
             )}
         </div>
     )

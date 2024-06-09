@@ -1,6 +1,7 @@
 import HeaderComponent from '../header';
 import FooterComponent from '../footer';
 import GlobalPlanningCompo from "../globalComponents/globalPlanningCompo";
+import GlobalGrades from '../../globalGrades';
 import { useLocation } from 'react-router';
 import { Navigate } from "react-router-dom";
 import { notification } from 'antd';
@@ -10,8 +11,9 @@ import ModalCreateEvent from "../teacherComponents/modalCreateEvent";
 function GlobalplanningPage() {
     const location = useLocation();
     const loginTokenData = location.state
-    const [calandarSelect, setcalandarSelect] = useState(null);
+    const planningGradesToken = loginTokenData.gradesState 
 
+    const [calandarSelect, setcalandarSelect] = useState(null);
     const [events, setEvents] = useState(() => {
         const localEventsRef = window.localStorage.getItem('eventsLocal')
         return localEventsRef ? JSON.parse(localEventsRef) : []
@@ -72,6 +74,9 @@ function GlobalplanningPage() {
                             loginRef={loginTokenData}
                             />
                         )}  
+                        {planningGradesToken && (
+                            <GlobalGrades events={events} />
+                        )}
                         <FooterComponent style={footerPlacement}/>
                     </div>  
                 </div>

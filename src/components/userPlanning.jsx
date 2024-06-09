@@ -11,7 +11,7 @@ function UserPlanning() {
 
     const userinfoLogin = () => {
         notification.info({
-            message: "planning user no data", 
+            message: "pas de données user", 
             duration: 2
         })
     }
