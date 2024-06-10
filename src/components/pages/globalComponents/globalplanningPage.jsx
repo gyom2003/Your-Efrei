@@ -75,7 +75,7 @@ function GlobalplanningPage() {
                             />
                         )}  
                         {planningGradesToken && (
-                            <GlobalGrades events={events} />
+                            <GlobalGrades events={events} username={loginTokenData.usernameLogin} />
                         )}
                         <FooterComponent style={footerPlacement}/>
                     </div>  

@@ -33,7 +33,8 @@ function LoginCompo() {
                     state:{
                         loginTokenRef:loginToken, 
                         isProfRef:isProf, 
-                        classDataRef: !isProf && identifiant.classData 
+                        classDataRef: !isProf && identifiant.classData, 
+                        usernameLogin: identifiant.username
                         } })
            }
         }) 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Button, Modal, Form, Input, InputNumber, notification } from 'antd';
 
-function GlobalGrades( {events} ) {
+function GlobalGrades( {events, username} ) {
     const location = useLocation();
     const loginTokenData = location.state
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -13,12 +13,15 @@ function GlobalGrades( {events} ) {
     });
 
     useEffect(() => {
+        const studentGrades = grades.filter(grade => grade.studentName === username)
+        console.log(studentGrades)
         if (grades.length > 0) {
             window.localStorage.setItem('grades', JSON.stringify(grades))
+            setGrades(studentGrades)
         } else {
             console.log("no modif")
         }
-    }, [grades])
+    }, [grades, username])
 
     const isProfRef = loginTokenData[Object.keys(loginTokenData)[1]]
     const [form] = Form.useForm()
@@ -63,7 +66,6 @@ function GlobalGrades( {events} ) {
     const showStudentGrades = () => {
         const showGradesCond = grades.filter(grade => grade.studentClass = loginTokenData.classDataRef);
         return showGradesCond.map(grade => {
-            console.log(grade)
             const event = events.find(event => event.id === grade.eventId);
             if (!event) {
                 console.log(`pas d'evenents trouvé pour le grade id :  ${grade.eventId}`);
@@ -104,7 +106,7 @@ function GlobalGrades( {events} ) {
 
             <Form form={form} layout='vertical'>
                 <Form.Item 
-                name="student name"
+                name="studentName"
                 label="nom de l'élève"
                 rules={[{ required:true, message: "Entrer le nom de l'élève" }]}>
                 <Input placeholder="nom de l'eleve"/>
